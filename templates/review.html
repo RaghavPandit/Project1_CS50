@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<title>About book</title>
+{% endblock %}
+
+{% block body %}
+  <nav class="navbar navbar-expand-sm bg-light navbar-light">
+      <a href="#" class = "navbar-brand">ReviewBooks</a>
+      <form class="form-inline ml-auto" action="{{ url_for('logout') }}" method="GET">
+        <button class ="btn btn-warning" type="logout">logout</button>
+      </form>
+  </nav>
+
+  <div class="container">
+    <h1>About book</h1>
+    <br>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th>Title</th>
+            <td>{{response_data["title"]}}</td>
+          </tr>
+          <tr>
+            <th>Author</th>
+            <td>{{response_data["author"]}}</td>
+          </tr>
+          <tr>
+            <th>ISBN</th>
+            <td>{{isbn}}</td>
+          </tr>
+          <tr>
+            <th>Publication Year</th>
+            <td>{{response_data["year"]}}</td>
+          </tr>
+          <tr>
+            <th>Average Rating</th>
+            <td>{{response_data["average_score"]}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+      <h3 class="text-center">Reviews</h3><hr>
+      {% for review in reviews %}
+      <div class="container">
+	<div class="card">
+	    <div class="card-body">
+	        <div class="row">
+        	    <div class="col-md-2">
+        	        <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="mr-3 mt-3 rounded-circle" style="width:60px";/>
+        	        <p class="text-secondary text-center">15 Minutes Ago</p>
+        	    </div>
+        	    <div class="col-md-10">
+        	        <p>
+        	             <strong class="float-left">{{review[3]}}</strong>
+                       <span class="float-right">Rating: {{review[2]}}</span>
+        	       </p>
+        	       <div class="clearfix"></div>
+        	        <p>{{review[0]}}</p>
+        	    </div>
+	        </div>
+	    </div>
+	</div>
+</div>
+      {% endfor %}
+
+    <br><br>
+    <row>
+      <form action= "{{url_for('review',isbn=isbn)}}" class="form-inline" method="POST">
+        <div class="form-group w-75">
+          <input type="text" class="form-control w-100" placeholder="Enter your review" name="review" id="review">
+        </div>
+        <div class="form-group">
+          <select class="form-control" name = "rating" id="sel1">
+            <option value = "1">1</option>
+            <option value = "2">2</option>
+            <option value = "3" >3</option>
+            <option value = "4" >4</option>
+            <option value = "5" >5</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      {% if avoid_review == True %}
+      <div class="alert alert-danger" role="alert">
+        You have already posted a review!.
+      </div>
+      {% endif %}
+    </row>
+    <br><br>
+  </div>
+
+
+{% endblock %}

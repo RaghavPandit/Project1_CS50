@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block head %}
+  <title>ERROR!</title>
+{% endblock %}
+
+{% block body %}
+<div class="alert alert-danger" role="alert">
+  You did something wrong <a class="alert-link" href="{{url_for("home")}}">Go back</a>
+</div>
+
+{% endblock %}

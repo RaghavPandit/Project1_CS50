@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <title>My Webpage</title>
+{% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        <a href="#" class = "navbar-brand">ReviewBooks</a>
+
+        <form class="form-inline ml-auto" action="{{ url_for('signin') }}" method="POST">
+
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">@</span>
+              </div>
+              <input type="text" class="form-control" placeholder="Email id" name="email">
+            </div>
+
+            <div class ="input-group"
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-key" aria-hidden="true"></i></span>
+              </div>
+              <input type="password" class="form-control" placeholder="Password" name="password">
+            </div>
+
+            <button class ="btn btn-success" type="submit">Login</button>
+        </form>
+    </nav>
+
+    <div class="container pt-5">
+
+        <div class="row">
+          <div class="col-sm-8">
+            <h1>Read and submit book reviews!</h1>
+          </div>
+
+          <div class="col-sm-4">
+
+            <h2>Create an account!</h2>
+
+            <form class="pt-3" name="sign-up" action="{{ url_for('signup') }}" method="POST">
+              <div class="form-group">
+                <label for="user_name">User name:</label>
+                <input type="text" class="form-control" placeholder="User name" id="user_name" name="user_name">
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email address:</label>
+                <input type="email" class="form-control" placeholder="Enter email" id="email" name="email">
+              </div>
+
+              <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" placeholder="Enter password" id="pwd" name="password">
+              </div>
+
+              <button type="submit" class="btn btn-primary">Sign Up</button>
+
+            </form>
+          </div>
+        </div>
+        <br><br>
+    </div>
+
+{% endblock %}

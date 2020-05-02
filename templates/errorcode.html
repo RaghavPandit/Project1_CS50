@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  ERROR!
+{% endblock %}
+
+{% block body %}
+<div class="alert alert-danger" role="alert">
+  You did something wrong <a class="alert-link" onclick = "goBack()">Go back</a>
+</div>
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+{% endblock %}
