@@ -23,7 +23,7 @@ def home():
         session['login']=None
 
     if session['login'] == True and session.get("userId") is not None:
-        return render_template("home.html")
+        return render_template("index.html")
     else:
         return render_template("login.html")
 
@@ -40,7 +40,7 @@ def signup():
         session['login']=True
         if session.get("userId") is None:
             session["userId"] = db.execute("SELECT id from users where email=:email",{"email":email}).fetchone()[0]
-        return render_template("home.html")
+        return render_template("index.html")
     else:
         return render_template("error.html")
 
@@ -57,7 +57,7 @@ def signin():
         session['login']=True
         if session.get("userId") is None:
             session["userId"] = db.execute("SELECT id from users where email=:email",{"email":email}).fetchone()[0]
-        return render_template("home.html")
+        return render_template("index.html")
     else:
         return render_template("error.html") , 403
 
